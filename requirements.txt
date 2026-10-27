@@ -1,0 +1,13 @@
+numpy
+pandas
+yfinance
+arch
+statsmodels
+scikit-learn
+scipy
+matplotlib
+tensorflow
+streamlit
+plotly
+jupyter
+pytest
