@@ -12,11 +12,11 @@ AF IA-3
 
 ## 1. Introduction
 
-Financial market volatility governs capital allocation, risk management, derivative pricing, and regulatory capital requirements. When asset return variance shifts unexpectedly, systemic stability is threatened. Traditional risk frameworks—most notably Value-at-Risk (VaR) and Expected Shortfall (ES)—rely on accurate volatility forecasts to determine daily margin requirements and portfolio hedging ratios. Under-predicting volatility triggers unexpected portfolio drawdowns, while over-predicting it ties up excess capital in unnecessary cash buffers.
+Volatility tells us how much the price of something goes up and down. It matters a lot in finance. Banks use it to decide how much money to keep aside, and it is also used in risk management, in pricing derivatives and in setting margin. Measures like Value-at-Risk (VaR) and Expected Shortfall (ES) need a volatility forecast to work. If we forecast it too low, we can lose more money than we expected. If we forecast it too high, we keep extra cash aside that we did not need.
 
-For four decades, parametric autoregressive models have served as the industry workhorse for conditional variance forecasting. The Generalized Autoregressive Conditional Heteroskedasticity (GARCH) model and its asymmetric descendants (EGARCH, GJR-GARCH) capture two empirical properties of financial returns: volatility clustering (large changes follow large changes) and the leverage effect (negative returns generate higher subsequent volatility than positive returns of equal magnitude). 
+The most common way to forecast volatility is to use GARCH models. There are three main types, GARCH, EGARCH and GJR-GARCH, and people have been using them for about 40 years. They work well because they capture two things we see in real market data. The first is volatility clustering. This means that after a big price move, another big move usually follows, and after a calm day, the next days are usually calm too. The second is the leverage effect. This means that when prices fall, volatility goes up more than when prices rise by the same amount.
 
-These parametric models enforce strict assumptions. They assume a fixed mathematical structure for variance updates, typically rely on unimodal innovation distributions (such as Student's $t$ or Gaussian), and depend strictly on past close-to-close returns. They discard complementary intraday information signals, such as high-low price spreads and trading volume surges.
+But these models also have some problems. They follow a fixed formula, and they assume the errors follow a normal or Student’s t distribution. They also only use the close-to-close return of each day. So they ignore the high and low price of the day and the trading volume, even though these can tell us a lot about what the market is doing.
 
 ```
        Closed-form Return Dynamics                  Non-Linear Multi-Feature Dynamics
@@ -35,9 +35,7 @@ These parametric models enforce strict assumptions. They assume a fixed mathemat
                                      Volatility Forecast
 ```
 
-Deep sequence models provide an alternative paradigm. Long Short-Term Memory (LSTM) recurrent networks learn non-linear temporal dependencies across arbitrary receptive fields without requiring analytical assumptions about return distributions. Moreover, LSTMs naturally ingest multi-dimensional feature tensors, allowing the model to simultaneously synthesize close-to-close returns, price extremes, and trading activity.
-
-Yet, deep learning models introduce practical risks into quantitative production pipelines: non-convex loss surfaces, sensitivity to weight initialization, high parameter counts, and vulnerability to overfitting during quiet market periods.
+So we also tried an LSTM (Long Short-Term Memory) network, which is a type of neural network that works well with data over time. We do not have to give it a formula. It learns the pattern from past data on its own. We can also give it many inputs together, like returns, price range and volume. But it has its own problems. It can give different results each time we train it, it has a lot of parameters, and it can overfit, which means it learns the training data too well and then does badly on new data.
 
 ### Project Scope and Core Objectives
 
