@@ -1,8 +1,8 @@
 # S&P 500 Volatility Forecasting: Econometric GARCH Family vs. Deep Recurrent Neural Networks
 
-Anvi Sharma-240958190
-Tanvika Shetty 240958001
-CSFT A
+Anvi Sharma-240958190,
+Tanvika Shetty 240958001,
+CSFT A,
 AF IA-3
 **Codebase:** [GitHub Repository Link](https://github.com/anvisharma11/Voltality_Forecasting)  
 **Data Source:** [Dataset Source Link (Yahoo Finance ^GSPC)](https://finance.yahoo.com/quote/%5EGSPC)  
