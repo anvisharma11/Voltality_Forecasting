@@ -1,0 +1,2 @@
+comparison,best_garch_model,mean_loss_diff_garch_minus_lstm,dm_stat,p_value,method,conclusion
+EGARCH vs LSTM,egarch,0.21991775415543582,5.411291890818876,6.257168272405522e-08,"Simple Diebold-Mariano (squared error, standard sample variance)",Significant difference (p < 0.05); LSTM had lower squared error.
